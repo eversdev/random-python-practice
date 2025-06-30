@@ -60,4 +60,5 @@ print(account1.get_balance())
 
 # Real attribute accessed via name mangling
 print(account1._BankAccount__balance)
+```
 
