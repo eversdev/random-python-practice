@@ -34,7 +34,7 @@ b1 = Book("LOTR", 200)
 
 b1._pages = 250
 print(b1.get_pages())  # Now prints 250 instead of 200, the original value
-
+```
 
 
 ## BankAccount Class
