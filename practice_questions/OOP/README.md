@@ -1,4 +1,4 @@
-SafeBox Class
+## SafeBox Class
 What it is
 SafeBox is a simple little class I made to store a secret 4-digit code. When you create it, you don’t need to give it a code right away — it starts empty (None). You can set the code later and check if someone enters the right one.
 
@@ -17,3 +17,19 @@ print(sf1.check_code("1234"))  # Returns 'entered real one'
 print(sf1.check_code("0000"))  # Returns 'entered incorrect code'
 What you get back
 Both the set_code and check_code methods return messages as strings to let you know what happened
+
+
+
+## Encapsulation Class
+
+What it is
+This class demonstrates how protected instance attributes can be accessed and modified from outside the class, and why this is generally discouraged. It’s not generally encouraged because it breaks encapsulation and can cause unexpected bugs.
+
+How to use it
+Create a Book object by passing the title and page number. The _pages attribute is protected but can still be changed directly from outside the class, which is not recommended.
+
+Example
+b1 = Book("LOTR", 200)
+
+b1._pages = 250
+print(b1.get_pages())  # Now prints 250 instead of 200, the original value
