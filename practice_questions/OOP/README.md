@@ -29,7 +29,35 @@ How to use it
 Create a Book object by passing the title and page number. The _pages attribute is protected but can still be changed directly from outside the class, which is not recommended.
 
 Example
+```python
 b1 = Book("LOTR", 200)
 
 b1._pages = 250
 print(b1.get_pages())  # Now prints 250 instead of 200, the original value
+
+
+
+## BankAccount Class
+
+What it is  
+This class demonstrates how to manage private instance attributes and the difference between accessing them via methods inside the class versus trying to access or modify them from outside the class, including how Python’s name mangling works.
+
+How to use it  
+Create an instance of the BankAccount class. Access the private attribute via the getter method (the recommended way). If you try to access or change the private attribute directly from outside, it won’t raise an error but will create a new attribute due to name mangling, which can cause unexpected behavior.
+
+Example
+
+```python
+account1 = BankAccount("John", 500)
+
+print(account1)
+
+# Python creates a new __balance attribute on account1 without changing the original private one. It doesn’t actually modify the mangled attribute.
+account1.__balance = 400
+
+# Print the real attribute using a method inside the class
+print(account1.get_balance())
+
+# Real attribute accessed via name mangling
+print(account1._BankAccount__balance)
+
