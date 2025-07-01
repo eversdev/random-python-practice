@@ -62,3 +62,27 @@ print(account1.get_balance())
 print(account1._BankAccount__balance)
 ```
 
+
+## Overview
+
+This `Account` class was created for demonstration purposes to show how private attributes can be accessed from outside versus inside the class, highlighting the differences and encapsulation.
+
+## Usage
+
+Create an instance of the `Account` class and try to access the private balance attribute using the getter method. You can also change the balance using the setter method, which validates input to maintain data integrity.
+
+If you try to access or modify the private attribute directly from outside the class, it may cause unexpected bugs, errors, or won't behave as intended due to encapsulation and name mangling.
+
+## Important
+
+The setter method only accepts integer values. If invalid input is provided, it will reject it and leave the balance unchanged to avoid accidental data corruption.
+
+## Example
+
+```python
+ac1 = Account("John Doe", 500)
+print(ac1.get_balance())   # Outputs: 500
+ac1.set_balance(1000)      # Sets balance to 1000
+ac1.set_balance("abc")     # Prints error and balance remains 1000
+'''
+
