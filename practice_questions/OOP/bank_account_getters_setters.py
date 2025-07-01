@@ -25,13 +25,12 @@ class Account:
         """
         Set the account balance if the input is an int; otherwise, print an error.
         """
-        if isinstance(user_input, int):
-                self.__balance = user_input
-                print(f"You have set the balance to {user_input}")
-        else:
-            print("Not an int!")
-
-
+        try:
+             new_balance = int(user_input)
+             self.__balance = new_balance
+        except ValueError:
+             raise ValueError("Invalid input! Please enter a valid integer.")
+        
 
 
 
