@@ -24,7 +24,10 @@ class Phone(Device):
 
 
 class Laptop(Device):
-    def start(self):
+    """
+    Starts the laptop by simulating powering on.
+    """
+    def start(self) -> str:
         print("Power on!")
 
 
@@ -39,3 +42,11 @@ except TypeError as e:
 
 l1 = Laptop()
 l1.start()
+
+
+def boot_device(device):
+    device.start()
+
+print("------")
+boot_device(p1)
+boot_device(l1)
