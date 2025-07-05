@@ -23,6 +23,12 @@ class Phone(Device):
 
 
 
+class Laptop(Device):
+    def start(self):
+        print("Power on!")
+
+
+
 p1 = Phone()
 p1.start()
 
@@ -30,3 +36,6 @@ try:
     d1 = Device()
 except TypeError as e:
     print("Unable to instantiate abstract class", e)
+
+l1 = Laptop()
+l1.start()
