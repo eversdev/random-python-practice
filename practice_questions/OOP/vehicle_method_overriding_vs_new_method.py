@@ -44,4 +44,4 @@ b1 = Boat()
 try:
     b1.stop()
 except AttributeError:
-    print("stop() method is not a method found in instance of class Boat")
+    print(".stop() method is not a method found in instance of class Boat")
