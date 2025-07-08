@@ -2,6 +2,7 @@ import pytest
 from app.abstract_base_device import Device, Phone, Laptop, boot_device
 from unittest.mock import patch
 
+#Beginning of Structural tests
 
 def test_abstract_base():
     """Test that instantiating Device raises TypeError."""
@@ -27,4 +28,40 @@ def test_boot_device(mock_boot_device):
     p = Phone()
     boot_device(p)
     mock_boot_device.assert_called_once()
+
+
+#Beginning of Behavioural tests
+
+def test_phone_start(capfd):
+    """Verify Phone.start() prints 'Dial a number'."""
+    p = Phone()
+    p.start()
+    out, _ = capfd.readouterr()
+    assert "Dial a number" in out
+
+
+
+
+def test_laptop_start(capfd):
+    """Verify Laptop.start() prints 'Power on!'."""
+    l = Laptop()
+    l.start()
+    out, _ = capfd.readouterr()
+    assert "Power on!" in out
+
+def test_boot_device_start_phone(capfd):
+    """Verify that a Phone instance prints 'Dial a number' when booted."""
+    p = Phone()
+    boot_device(p)
+    out, _ = capfd.readouterr()
+    assert "Dial a number" in out
+
+
+def test_boot_device_start_laptop(capfd):
+    """Verify that a Laptop instance prints 'Power on!' when booted."""
+    l = Laptop()
+    boot_device(l)
+    out, _ = capfd.readouterr()
+    assert "Power on!" in out
+
 
