@@ -14,5 +14,5 @@ jobs:
       - name: Install dependencies
         run: pip install pytest
       - name: Run tests
-        run: pytest tests/test_abstract_base_device.py
+        run: pytest 
 
