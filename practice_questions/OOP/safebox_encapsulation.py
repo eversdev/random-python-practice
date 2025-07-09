@@ -6,7 +6,8 @@ class SafeBox:
 
     The set_code method sets the code based on user input.
 
-    The check_code method checks if the input matches the stored code and returns a message.
+    The check_code method checks if the input matches the
+    stored code and returns a message.
     """
 
     def __init__(self):
@@ -20,7 +21,8 @@ class SafeBox:
         Prompt the user to enter a 4-digit code.
 
         Returns:
-        str: A message indicating if the code is too long, too short, or successfully set.
+        str: A message indicating if the code is too long,
+        too short, or successfully set.
         """
 
         while True:

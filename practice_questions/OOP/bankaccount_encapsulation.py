@@ -6,7 +6,8 @@ class BankAccount:
 
     def __init__(self, name, balance):
         """
-        Initialize a BankAccount object with a public name and a private balance attribute.
+        Initialize a BankAccount object with a public name
+        and a private balance attribute.
         """
         self.name = name
         self.__balance = balance
@@ -35,7 +36,9 @@ account1 = BankAccount("John", 500)
 print(account1)
 
 
-# Python creates a new __balance attribute on account1 without changing the original private one. It doesn’t actually modify the mangled attribute.
+# Python creates a new __balance attribute on account1 without changing
+# the original private one.
+# It doesn’t actually modify the mangled attribute.
 account1.__balance = 400
 
 # Print the real atribute using a method inside the class

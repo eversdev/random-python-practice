@@ -1,9 +1,11 @@
 class Book:
     """
-    Simple Book class with a get method and a str object method, it has one protected attribute
+    Simple Book class with a get method and a str object method, it has one protected
+    attribute
 
-    This class was used for demonstrationale purposes to show that protced instance attributes can
-    still be accessed from the outside but it shouldnt as its not recommended and breaks
+    This class was used for demonstrationale purposes to show that protced instance
+    attributes can still be accessed from the outside but it shouldn't as it's
+    not recommended and breaks
     encapsulation.
     """
 

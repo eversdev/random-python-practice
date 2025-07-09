@@ -18,7 +18,7 @@ class Player:
 
     def damage_points(self) -> int:
         """
-                Prompts the user to enter damage points and applies it to the player's health.
+        Prompts the user to enter damage points and applies it to the player's health.
 
         - If input is greater than 100, prompts again.
         - If health is already 0, notifies that the opponent has fainted.
@@ -43,13 +43,15 @@ class Player:
                     self.__health -= dp
                     if self.__health > 0:
                         print(
-                            f"You dealt {dp} damage. Opponents health is now {self.__health}"
+                            f"You dealt {dp} damage. "
+                            f"Opponents health is now {self.__health}"
                         )
                         return self.__health
                     elif self.__health <= 0:
                         self.__health = 0
                         print(
-                            f"You dealt {dp} damage. Opponents health is now {self.__health}"
+                            f"You dealt {dp} damage. "
+                            f"Opponents health is now {self.__health}"
                         )
                         print("Opponent has fainted")
                     return self.__health

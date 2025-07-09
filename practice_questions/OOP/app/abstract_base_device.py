@@ -49,7 +49,8 @@ l1.start()
 def boot_device(device):
     """
     Takes any object with a start() method and calls it.
-    Demonstrates abstraction and polymorphism by allowing different device types to be booted the same way.
+    Demonstrates abstraction and polymorphism by allowing different device
+    types to be booted the same way.
     """
     device.start()
 

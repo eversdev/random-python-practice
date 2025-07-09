@@ -43,8 +43,8 @@ def test_phone_start(capfd):
 
 def test_laptop_start(capfd):
     """Verify Laptop.start() prints 'Power on!'."""
-    l = Laptop()
-    l.start()
+    l1 = Laptop()
+    l1.start()
     out, _ = capfd.readouterr()
     assert "Power on!" in out
 
@@ -59,7 +59,7 @@ def test_boot_device_start_phone(capfd):
 
 def test_boot_device_start_laptop(capfd):
     """Verify that a Laptop instance prints 'Power on!' when booted."""
-    l = Laptop()
-    boot_device(l)
+    l1 = Laptop()
+    boot_device(l1)
     out, _ = capfd.readouterr()
     assert "Power on!" in out

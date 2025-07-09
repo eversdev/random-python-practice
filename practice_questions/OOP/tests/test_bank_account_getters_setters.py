@@ -18,7 +18,10 @@ def test_str_method():
 
 # === Balance Accessors ===
 def test_get_balance():
-    """Test that get_balance gets the correct balance of an instance you call the method on"""
+    """
+    Test that get_balance gets the correct balance of an
+    instance you call the method on
+    """
     a1 = Account("Jane", 300)
     assert a1.get_balance() == 300
 
