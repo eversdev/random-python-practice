@@ -18,6 +18,6 @@ jobs:
       - name: Python Linter
         run: flake8
       - name: Auto-formatter
-        run: black . 
+        run: black --line length 70
 
 
