@@ -21,7 +21,7 @@ jobs:
         run: isort .
 
       - name: Auto-formatter (black)
-        run: black --line-length 79 .
+        run: black .
 
       - name: Run tests
         run: pytest
