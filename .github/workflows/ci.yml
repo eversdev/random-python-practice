@@ -12,7 +12,9 @@ jobs:
         with:
           python-version: 3.11
       - name: Install dependencies
-        run: pip install pytest
+        run: pip install pytest flake8
       - name: Run tests
-        run: pytest 
+        run: pytest
+      - name: Python Linter
+        run: flake8
 
