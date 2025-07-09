@@ -1,22 +1,20 @@
 class Player:
-
     """
     A simple class representing a player with health management.
 
     Provides methods to heal and apply damage, while enforcing limits
     (e.g., health cannot exceed 100 or fall below 0).
     """
-    
+
     def __init__(self):
         """Initializes the player with 0 health."""
         self.__health = 0
-
 
     def __str__(self) -> str:
         """
         Returns a custom string representation of the Player object.
         """
-        return "Player Object"    
+        return "Player Object"
 
     def damage_points(self) -> int:
         """
@@ -42,16 +40,19 @@ class Player:
                     return self.__health
 
                 else:
-                    self.__health-=dp
+                    self.__health -= dp
                     if self.__health > 0:
-                        print(f"You dealt {dp} damage. Opponents health is now {self.__health}")
+                        print(
+                            f"You dealt {dp} damage. Opponents health is now {self.__health}"
+                        )
                         return self.__health
                     elif self.__health <= 0:
                         self.__health = 0
-                        print(f"You dealt {dp} damage. Opponents health is now {self.__health}")
+                        print(
+                            f"You dealt {dp} damage. Opponents health is now {self.__health}"
+                        )
                         print("Opponent has fainted")
                     return self.__health
-        
 
     def health_points(self) -> int:
         """
@@ -66,7 +67,7 @@ class Player:
         """
         while True:
             hp = int(input("Enter health points: "))
-        
+
             if hp <= 0:
                 print("No change in health points are you sure?")
                 continue
@@ -74,18 +75,13 @@ class Player:
                 print("Healing maxed out!")
                 continue
 
-            self.__health+=hp                       
+            self.__health += hp
             if self.__health > 100:
                 self.__health = 100
                 return self.__health
             elif self.__health > 0:
                 print(f"Your hp is now {self.__health}")
                 return self.__health
-
-       
-
-
-
 
 
 p1 = Player()
@@ -96,8 +92,6 @@ print(f"{p1} Player health is {p1._Player__health}")
 p1.health_points()
 
 print(p1._Player__health)
-
-
 
 
 """

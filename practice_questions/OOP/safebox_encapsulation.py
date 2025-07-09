@@ -18,11 +18,11 @@ class SafeBox:
         Set the safe box code.
 
         Prompt the user to enter a 4-digit code.
-        
+
         Returns:
         str: A message indicating if the code is too long, too short, or successfully set.
         """
-        
+
         while True:
 
             user_input = input("Enter a 4-digit code: ")
@@ -34,7 +34,6 @@ class SafeBox:
             else:
                 self.__code = user_input
                 return f"You have entered {user_input} as your code."
-            
 
     def check_code(self, user_input) -> str:
         """
