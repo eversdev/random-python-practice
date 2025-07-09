@@ -12,12 +12,14 @@ jobs:
         with:
           python-version: 3.11
       - name: Install dependencies
-        run: pip install pytest flake8 black
+        run: pip install pytest flake8 black isort
       - name: Run tests
         run: pytest
       - name: Python Linter
         run: flake8
       - name: Auto-formatter
         run: black --line-length 70
+      - name: Run isort
+        run: isort .
 
 
