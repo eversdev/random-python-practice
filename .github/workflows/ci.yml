@@ -12,9 +12,12 @@ jobs:
         with:
           python-version: 3.11
       - name: Install dependencies
-        run: pip install pytest flake8
+        run: pip install pytest flake8 black
       - name: Run tests
         run: pytest
       - name: Python Linter
         run: flake8
+      - name: Auto-formatter
+        run: black --check .
+
 
