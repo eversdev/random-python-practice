@@ -86,25 +86,19 @@ class Player:
                 return self.__health
 
 
-p1 = Player()
+if __name__ == "__main__":
+    p1 = Player()
 
+    print(f"{p1} Player health is {p1._Player__health}")
 
-print(f"{p1} Player health is {p1._Player__health}")
+    p1.health_points()
 
-p1.health_points()
+    print(p1._Player__health)
 
-print(p1._Player__health)
-
-
-"""
-p1 = Player()
-
-
-print(f"{p1} Player health is {p1._Player__health}")
-
-
-p1.health_points()
-p1.damage_points()
-
-print(p1._Player__health)
-"""
+    """
+    p1 = Player()
+    print(f"{p1} Player health is {p1._Player__health}")
+    p1.health_points()
+    p1.damage_points()
+    print(p1._Player__health)
+    """
