@@ -1,6 +1,7 @@
-import pytest
-from app.abstract_base_device import Device, Phone, Laptop, boot_device
 from unittest.mock import patch
+
+import pytest
+from app.abstract_base_device import Device, Laptop, Phone, boot_device
 
 # Beginning of Structural tests
 

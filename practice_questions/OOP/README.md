@@ -1,88 +1,176 @@
-## SafeBox Class
-What it is
-SafeBox is a simple little class I made to store a secret 4-digit code. When you create it, you don’t need to give it a code right away — it starts empty (None). You can set the code later and check if someone enters the right one.
-
-How to use it
-When you make a SafeBox, no code needed at first.
-
-Use set_code(user_input) to set your 4-digit code. It checks if your code is exactly 4 digits and tells you if it’s too short or too long.
-
-Use check_code(user_input) to check if the code you enter matches the one saved inside.
-
-Example
-sf1 = SafeBox()  # No need to give a code when creating it
-print(sf1.set_code("1234"))  # Sets the code, returns '1234'
-print(sf1.set_code("123"))   # Returns 'code you entered is less than 4 digits'
-print(sf1.check_code("1234"))  # Returns 'entered real one'
-print(sf1.check_code("0000"))  # Returns 'entered incorrect code'
-What you get back
-Both the set_code and check_code methods return messages as strings to let you know what happened
 
 
+## Random Python Practice
 
-## Encapsulation Class
+A collection of small Python exercises and mini-projects, focusing especially on object-oriented programming (OOP) principles like **encapsulation**, **private attributes**, and **class-based design**.
 
-What it is
-This class demonstrates how protected instance attributes can be accessed and modified from outside the class, and why this is generally discouraged. It’s not generally encouraged because it breaks encapsulation and can cause unexpected bugs.
+---
 
-How to use it
-Create a Book object by passing the title and page number. The _pages attribute is protected but can still be changed directly from outside the class, which is not recommended.
+## Project Structure
 
-Example
-```python
-b1 = Book("LOTR", 200)
-
-b1._pages = 250
-print(b1.get_pages())  # Now prints 250 instead of 200, the original value
+```text
+random-python-practice/
+│
+├── practice_questions/
+│   └── OOP/
+│       ├── app/
+│       │   ├── abstract_base_device.py
+│       │   └── ...
+│       ├── tests/
+│       │   ├── test_abstract_base_device.py
+│       │   └── ...
+│       ├── bankaccount_encapsulation.py
+│       ├── book_encapsulation.py
+│       ├── player_encapsulation.py
+│       └── ...
+│
+├── .github/
+│   └── workflows/
+│       └── python-lint.yml
+│
+├── .flake8
+├── README.md
+├── requirements.txt
+└── venv/
 ```
 
 
-## BankAccount Class
 
-What it is  
-This class demonstrates how to manage private instance attributes and the difference between accessing them via methods inside the class versus trying to access or modify them from outside the class, including how Python’s name mangling works.
+---
 
-How to use it  
-Create an instance of the BankAccount class. Access the private attribute via the getter method (the recommended way). If you try to access or change the private attribute directly from outside, it won’t raise an error but will create a new attribute due to name mangling, which can cause unexpected behavior.
+## Local Setup (Linter, Formatter, CI)
 
-Example
+This repo uses **PEP8 standards** enforced through:
+
+- `black` (auto code formatter)
+- `flake8` (style checker/linter)
+- GitHub Actions workflow (CI on push)
+
+###  Setup Instructions
+
+```bash
+# Clone the repo and enter the directory
+git clone <repo-url>
+cd random-python-practice
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install black flake8
+
+# Format and lint code
+black .
+flake8
+```
+
+
+##  Classes & Examples
+## SafeBox
+A simple class for storing and verifying a 4-digit code.
+
+```python
+sf1 = SafeBox()
+sf1.set_code("1234")        # ➜ '1234'
+sf1.set_code("123")         # ➜ 'code you entered is less than 4 digits'
+sf1.check_code("1234")      # ➜ 'entered real one'
+sf1.check_code("0000")      # ➜ 'entered incorrect code'
+```
+
+##  Book (Encapsulation)
+Demonstrates how a protected attribute can still be modified externally, breaking encapsulation.
+
+```python
+b1 = Book("LOTR", 200)
+b1._pages = 250             # Not recommended!
+print(b1.get_pages())       # ➜ 250
+```
+
+## BankAccount (Private Attributes)
+Illustrates how private attributes are accessed internally vs externally via name mangling.
 
 ```python
 account1 = BankAccount("John", 500)
+account1.__balance = 400     # Creates new attribute, doesn't affect original
+print(account1.get_balance())  # ➜ 500
+print(account1._BankAccount__balance)  # ➜ 500 (actual private value)
+```
 
-print(account1)
+## Player Class
+A small simulation of healing and damaging a player using input validation.
 
-# Python creates a new __balance attribute on account1 without changing the original private one. It doesn’t actually modify the mangled attribute.
-account1.__balance = 400
+```python
+p1 = Player()
+p1.health_points()     # Prompt user to add HP
+p1.damage_points()     # Prompt user to apply damage
+```
 
-# Print the real attribute using a method inside the class
-print(account1.get_balance())
+## Testing
+Test files are located in practice_questions/OOP/tests/. Run all tests:
 
-# Real attribute accessed via name mangling
-print(account1._BankAccount__balance)
+```bash
+python -m unittest discover -s practice_questions/OOP/tests
 ```
 
 
-## Overview
+## CI/CD Pipeline
+This repo uses GitHub Actions to auto-check code on push:
 
-This `Account` class was created for demonstration purposes to show how private attributes can be accessed from outside versus inside the class, highlighting the differences and encapsulation.
+- `black` ensures consistent formatting
 
-## Usage
+- `flake8` checks for `PEP8` violations
 
-Create an instance of the `Account` class and try to access the private balance attribute using the getter method. You can also change the balance using the setter method, which validates input to maintain data integrity.
+No code is allowed into main unless it passes both.
+ 
 
-If you try to access or modify the private attribute directly from outside the class, it may cause unexpected bugs, errors, or won't behave as intended due to encapsulation and name mangling.
+## Install formatting and linting tools:
 
-## Important
+```bash
+pip install -r requirements.txt
+```
 
-The setter method only accepts integer values. If invalid input is provided, it will reject it and leave the balance unchanged to avoid accidental data corruption.
 
-## Example
 
-```python
-ac1 = Account("John Doe", 500)
-print(ac1.get_balance())   # Outputs: 500
-ac1.set_balance(1000)      # Sets balance to 1000
-ac1.set_balance("abc")     # Prints error and balance remains 1000
-'''
+## Pre-commit Hooks
 
+This project uses [pre-commit](https://pre-commit.com/) to automatically run code formatters and linters (like `black` and `flake8`) before each commit.
+
+### How to use
+
+1. Make sure you have your virtual environment activated:
+   ```bash
+   source venv/bin/activate   # macOS/Linux
+   # or
+   venv\Scripts\activate      # Windows
+   ```
+
+2. Install pre-commit if you haven’t already:
+   ```bash 
+    pip install pre-commit
+   ```
+
+3. Install pre-commit if you haven’t already:
+   ```bash 
+    pre-commit install
+   ```
+From now on, whenever you run git commit, pre-commit will automatically
+check your code for style and formatting issues and block the 
+commit if there are problems to fix.
+
+## Running pre-commit manually
+
+You can also run the hooks against all files manually with:
+
+   ```bash 
+    pre-commit run --all-files
+   ```
+
+
+
+## Notes
+- This project is actively being cleaned up and standardized
+
+- Some older files are still being updated for formatting/linting
+
+- New features and refactors coming soon
