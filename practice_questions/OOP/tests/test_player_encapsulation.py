@@ -31,12 +31,12 @@ def test_initial_health_is_zero():
 
 @patch("app.player_encapsulation.input")
 def test_health_points_rejects_above_100(mock_obj, capfd):
-    mock_obj.return_value = "101"
+    mock_obj.side_effect = ["101", "50"]
     player1 = Player()
     result = player1.health_points()
     o, _ = capfd.readouterr()
     assert "Healing maxed out!" in o
-    assert result == 0
+    assert result == 50
 
 
 @patch("app.player_encapsulation.input")
