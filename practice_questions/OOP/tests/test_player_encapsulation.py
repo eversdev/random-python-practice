@@ -2,8 +2,6 @@ from unittest.mock import patch
 
 from app.player_encapsulation import Player
 
-# Structural Tests
-
 
 def test_player_instance():
     player1 = Player()
@@ -19,9 +17,6 @@ def test_health_is_private():
 def test_player_str():
     player1 = Player()
     assert str(player1) == "Player Object"
-
-
-# Behavioural Tests
 
 
 def test_initial_health_is_zero():
@@ -59,8 +54,14 @@ def test_health_points_adds_and_caps(mock_obj, capfd):
     assert result == 100
 
 
-def test_damage_points_rejects_above_100():
-    pass
+@patch("app.test_player_encapsulation.input")
+def test_damage_points_rejects_above_100(mock_obj, capfd):
+    player1 = Player()
+    mock_obj.side_effect = ["101", "50"]
+    result = player1.damage_points()
+    o, _ = capfd.readouterr()
+    assert "Damage input above 100 please enter numbers 100 or below." in o
+    assert result == 50
 
 
 def test_damage_points_blocks_when_health_zero():
