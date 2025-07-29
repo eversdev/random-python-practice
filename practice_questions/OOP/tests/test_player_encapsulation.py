@@ -65,7 +65,8 @@ def test_damage_points_rejects_above_100(mock_obj, capfd):
 
 
 def test_damage_points_blocks_when_health_zero():
-    pass
+    p1 = Player()
+    assert p1.damage_points() = "Opponent's health already  at 0 please fill up HP
 
 
 def test_damage_points_reduces_health_properly():
