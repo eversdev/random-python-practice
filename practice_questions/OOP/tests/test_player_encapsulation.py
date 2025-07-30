@@ -74,9 +74,16 @@ def test_damage_points_blocks_when_health_zero(mock_obj, capfd):
     assert "Opponent's health already  at 0 please fill up HP." in o
 
 
-def test_damage_points_reduces_health_properly():
-    pass
+@patch("app.player_encapsulation.input")
+def test_damage_points_reduces_health_properly(mock_obj):
+    p1 = Player()
+    p1._Player__health = 50
+    mock_obj.return_value = "30"
+    p1.damage_points()
+    assert p1._Player__health == 20
 
 
-def test_damage_points_triggers_fainted_message_at_zero():
+@patch("app.player_encapsulation.input")
+def test_damage_points_triggers_fainted_message_at_zero(mock_obj, capfd):
+
     pass
