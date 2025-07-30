@@ -54,9 +54,10 @@ def test_health_points_adds_and_caps(mock_obj, capfd):
     assert result == 100
 
 
-@patch("app.test_player_encapsulation.input")
+@patch("app.player_encapsulation.input")
 def test_damage_points_rejects_above_100(mock_obj, capfd):
     player1 = Player()
+    player1._Player__health = 100
     mock_obj.side_effect = ["101", "50"]
     result = player1.damage_points()
     o, _ = capfd.readouterr()
@@ -64,9 +65,13 @@ def test_damage_points_rejects_above_100(mock_obj, capfd):
     assert result == 50
 
 
-def test_damage_points_blocks_when_health_zero():
+@patch("app.player_encapsulation.input")
+def test_damage_points_blocks_when_health_zero(mock_obj, capfd):
     p1 = Player()
-    assert p1.damage_points() = "Opponent's health already  at 0 please fill up HP
+    mock_obj.return_value = "50"
+    p1.damage_points()
+    o, _ = capfd.readouterr()
+    assert "Opponent's health already  at 0 please fill up HP." in o
 
 
 def test_damage_points_reduces_health_properly():

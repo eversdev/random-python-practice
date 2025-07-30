@@ -20,41 +20,32 @@ class Player:
         """
         Prompts the user to enter damage points and applies it to the player's health.
 
-        - If input is greater than 100, prompts again.
-        - If health is already 0, notifies that the opponent has fainted.
-        - If valid, subtracts from health and prints the result.
-        - Health cannot go below 0.
+           - If input is greater than 100, prompts again.
+           - If health is already 0, notifies that the opponent has fainted.
+           - If valid, subtracts from health and prints the result.
+           - Health cannot go below 0.
 
-        Returns:
-            int: The player's current health.
-
+           Returns:
+           int: The player's current health.
         """
         while True:
             dp = int(input("Hit your opponent: "))
             if dp > 100:
                 print(f"Invalid damage input: {dp}")
                 print("Damage input above 100 please enter numbers 100 or below.")
+                continue  # Ask again immediately
+            if self.__health == 0:
+                print("Opponent's health already  at 0 please fill up HP.")
+                return self.__health
+            self.__health -= dp
+            if self.__health > 0:
+                print(f"You dealt {dp} damage. Opponents health is now {self.__health}")
+                return self.__health
             else:
-                if self.__health == 0:
-                    print("Opponent's health already  at 0 please fill up HP.")
-                    return self.__health
-
-                else:
-                    self.__health -= dp
-                    if self.__health > 0:
-                        print(
-                            f"You dealt {dp} damage. "
-                            f"Opponents health is now {self.__health}"
-                        )
-                        return self.__health
-                    elif self.__health <= 0:
-                        self.__health = 0
-                        print(
-                            f"You dealt {dp} damage. "
-                            f"Opponents health is now {self.__health}"
-                        )
-                        print("Opponent has fainted")
-                    return self.__health
+                self.__health = 0
+                print(f"You dealt {dp} damage. Opponents health is now {self.__health}")
+                print("Opponent has fainted")
+                return self.__health
 
     def health_points(self) -> int:
         """
