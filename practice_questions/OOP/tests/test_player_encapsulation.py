@@ -92,3 +92,18 @@ def test_damage_points_triggers_fainted_message_at_zero(mock_obj, capfd):
     o, _ = capfd.readouterr()
     assert "Opponent has fainted" in o
     assert p1._Player__health == 0
+
+
+@patch("app.player_encapsulation.input")
+def test_sequence_healing(mock_obj):
+    p1 = Player()
+    mock_obj.side_effect = ["50", "30", "20"]
+
+    p1.health_points()
+    assert p1._Player__health == 50
+
+    p1.damage_points()
+    assert p1._Player__health == 20
+
+    p1.health_points()
+    assert p1._Player__health == 40
