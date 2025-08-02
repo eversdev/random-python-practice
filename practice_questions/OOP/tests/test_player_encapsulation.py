@@ -119,5 +119,9 @@ def test_damage_points_returns_current_health(mock_obj):
     assert result == p1._Player__health
 
 
-def test_health_points_returns_current_health():
-    pass
+@patch("app.player_encapsulation.input")
+def test_health_points_returns_current_health(mock_obj):
+    p1 = Player()
+    mock_obj.return_value = "90"
+    result = p1.health_points()
+    assert result == p1._Player__health
