@@ -107,3 +107,17 @@ def test_sequence_healing(mock_obj):
 
     p1.health_points()
     assert p1._Player__health == 40
+
+
+@patch("app.player_encapsulation.input")
+def test_damage_points_returns_current_health(mock_obj):
+    p1 = Player()
+    p1._Player__health = 100
+    mock_obj.return_value = "70"
+
+    result = p1.damage_points()
+    assert result == p1._Player__health
+
+
+def test_health_points_returns_current_health():
+    pass
