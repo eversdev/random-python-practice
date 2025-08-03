@@ -35,7 +35,7 @@ class Player:
                 print("Damage input above 100 please enter numbers 100 or below.")
                 continue  # Ask again immediately
             if self.__health == 0:
-                print("Opponent's health already  at 0 please fill up HP.")
+                print("Opponent's health already at 0 please fill up HP.")
                 return self.__health
             self.__health -= dp
             if self.__health > 0:
@@ -59,22 +59,25 @@ class Player:
             int: The player's current health.
         """
         while True:
-            hp = int(input("Enter health points: "))
+            try:
+                hp = int(input("Enter health points: "))
 
-            if hp <= 0:
-                print("No change in health points are you sure?")
-                continue
-            elif hp > 100:
-                print("Healing maxed out!")
-                continue
+                if hp <= 0:
+                    print("No change in health points are you sure?")
+                    continue
+                elif hp > 100:
+                    print("Healing maxed out!")
+                    continue
 
-            self.__health += hp
-            if self.__health > 100:
-                self.__health = 100
-                return self.__health
-            elif self.__health > 0:
-                print(f"Your hp is now {self.__health}")
-                return self.__health
+                self.__health += hp
+                if self.__health > 100:
+                    self.__health = 100
+                    return self.__health
+                elif self.__health > 0:
+                    print(f"Your hp is now {self.__health}")
+                    return self.__health
+            except ValueError:
+                print("Enter a valid number")
 
 
 if __name__ == "__main__":

@@ -125,3 +125,28 @@ def test_health_points_returns_current_health(mock_obj):
     mock_obj.return_value = "90"
     result = p1.health_points()
     assert result == p1._Player__health
+
+
+@patch("app.player_encapsulation.input")
+def test_health_points_rejects_empty_input(mock_obj, capfd):
+    p1 = Player()
+    mock_obj.side_effect = [
+        "",
+        "20",
+    ]  # first input is invalid (empty), second is valid to exit the loop
+    p1.health_points()
+    o, _ = capfd.readouterr()
+    assert "Enter a valid number" in o
+    assert p1._Player__health == 20
+
+
+def test_health_points_rejects_non_numeric_input():
+    pass
+
+
+def test_damage_points_rejects_empty_input():
+    pass
+
+
+def test_damage_points_rejects_non_numeric_input():
+    pass
