@@ -29,23 +29,32 @@ class Player:
            int: The player's current health.
         """
         while True:
-            dp = int(input("Hit your opponent: "))
-            if dp > 100:
-                print(f"Invalid damage input: {dp}")
-                print("Damage input above 100 please enter numbers 100 or below.")
-                continue  # Ask again immediately
-            if self.__health == 0:
-                print("Opponent's health already at 0 please fill up HP.")
-                return self.__health
-            self.__health -= dp
-            if self.__health > 0:
-                print(f"You dealt {dp} damage. Opponents health is now {self.__health}")
-                return self.__health
-            else:
-                self.__health = 0
-                print(f"You dealt {dp} damage. Opponents health is now {self.__health}")
-                print("Opponent has fainted")
-                return self.__health
+            try:
+                dp = int(input("Hit your opponent: "))
+                if dp > 100:
+                    print(f"Invalid damage input: {dp}")
+                    print("Damage input above 100 please enter numbers 100 or below.")
+                    continue  # Ask again immediately
+                if self.__health == 0:
+                    print("Opponent's health already at 0 please fill up HP.")
+                    return self.__health
+                self.__health -= dp
+                if self.__health > 0:
+                    print(
+                        f"You dealt {dp} damage."
+                        f"Opponents health is now {self.__health}"
+                    )
+                    return self.__health
+                else:
+                    self.__health = 0
+                    print(
+                        f"You dealt {dp} damage."
+                        f"Opponents health is now {self.__health}"
+                    )
+                    print("Opponent has fainted")
+                    return self.__health
+            except ValueError:
+                print("Enter a valid number")
 
     def health_points(self) -> int:
         """

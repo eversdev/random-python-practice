@@ -150,8 +150,13 @@ def test_health_points_rejects_non_numeric_input(mock_obj, capfd):
     assert p1._Player__health == 40
 
 
-def test_damage_points_rejects_empty_input():
-    pass
+@patch("app.player_encapsulation.input")
+def test_damage_points_rejects_empty_input(mock_obj, capfd):
+    p1 = Player()
+    mock_obj.side_effect = ["", "60"]
+    p1.damage_points()
+    output, _ = capfd.readouterr()
+    assert "Enter a valid number" in output
 
 
 def test_damage_points_rejects_non_numeric_input():
