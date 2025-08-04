@@ -71,7 +71,7 @@ def test_damage_points_blocks_when_health_zero(mock_obj, capfd):
     mock_obj.return_value = "50"
     p1.damage_points()
     o, _ = capfd.readouterr()
-    assert "Opponent's health already  at 0 please fill up HP." in o
+    assert "Opponent's health already at 0 please fill up HP." in o
 
 
 @patch("app.player_encapsulation.input")
@@ -159,5 +159,12 @@ def test_damage_points_rejects_empty_input(mock_obj, capfd):
     assert "Enter a valid number" in output
 
 
-def test_damage_points_rejects_non_numeric_input():
-    pass
+@patch("app.player_encapsulation.input")
+def test_damage_points_rejects_non_numeric_input(mock_obj, capfd):
+    p1 = Player()
+    p1._Player__health = 100
+    mock_obj.side_effect = ["abc", "15"]
+    p1.damage_points()
+    output, _ = capfd.readouterr()
+    assert "Enter a valid number" in output
+    assert p1._Player__health == 85
