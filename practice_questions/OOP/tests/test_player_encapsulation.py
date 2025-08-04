@@ -133,7 +133,7 @@ def test_health_points_rejects_empty_input(mock_obj, capfd):
     mock_obj.side_effect = [
         "",
         "20",
-    ]  # first input is invalid (empty), second is valid to exit the loop
+    ]
     p1.health_points()
     o, _ = capfd.readouterr()
     assert "Enter a valid number" in o
