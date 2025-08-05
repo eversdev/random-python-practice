@@ -30,9 +30,9 @@ class SafeBox:
             user_input = input("Enter a 4-digit code: ")
 
             if len(user_input) > 4:
-                print("The code you entered exceeds 4 digits.")
+                return "The code you entered exceeds 4 digits."
             elif len(user_input) < 4:
-                print("The code you entered is less than 4 digits.")
+                return "The code you entered is less than 4 digits."
             else:
                 self.__code = user_input
                 return f"You have entered {user_input} as your code."
@@ -51,3 +51,10 @@ class SafeBox:
             return "Code entered correctly."
         else:
             return "Incorrect code entered."
+
+
+if __name__ == "__main__":
+    s1 = SafeBox()
+    s1.set_code()
+
+    print(s1.check_code("1234"))
