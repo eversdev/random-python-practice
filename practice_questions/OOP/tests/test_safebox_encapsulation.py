@@ -3,4 +3,5 @@ from app.safebox_encapsulation import SafeBox
 
 
 def test_safebox_instantiation():
-    pass
+    s1 = SafeBox()
+    assert isinstance(s1, SafeBox)
