@@ -26,16 +26,18 @@ class SafeBox:
         """
 
         while True:
+            try:
+                user_input = input("Enter a 4-digit code: ")
 
-            user_input = input("Enter a 4-digit code: ")
-
-            if len(user_input) > 4:
-                return "The code you entered exceeds 4 digits."
-            elif len(user_input) < 4:
-                return "The code you entered is less than 4 digits."
-            else:
-                self.__code = user_input
-                return f"You have entered {user_input} as your code."
+                if len(user_input) > 4:
+                    return "The code you entered exceeds 4 digits."
+                elif len(user_input) < 4:
+                    return "The code you entered is less than 4 digits."
+                else:
+                    self.__code = int(user_input)
+                    return f"You have entered {user_input} as your code."
+            except ValueError:
+                return "Invalid input: please enter only numeric digits"
 
     def check_code(self, user_input) -> str:
         """
