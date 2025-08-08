@@ -19,7 +19,15 @@ def test_code_is_private(mock_obj):
 
 
 @patch("app.safebox_encapsulation.input")
-def test_code_returns_str(mock_obj):
+def test_set_code_returns_str(mock_obj):
     mock_obj.return_value = "1234"
     s1 = SafeBox()
     assert isinstance(s1.set_code(), str)
+
+
+@patch("app.safebox_encapsulation.input")
+def test_check_code_returns_str(mock_obj):
+    mock_obj.return_value = "1234"
+    s1 = SafeBox()
+    s1.set_code()
+    assert isinstance(s1.check_code("1234"), str)
