@@ -31,3 +31,8 @@ def test_check_code_returns_str(mock_obj):
     s1 = SafeBox()
     s1.set_code()
     assert isinstance(s1.check_code("1234"), str)
+
+
+def test_instance_has_one_attribute():
+    s1 = SafeBox()
+    assert len(s1.__dict__) == 1

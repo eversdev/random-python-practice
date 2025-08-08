@@ -60,3 +60,17 @@ if __name__ == "__main__":
     s1.set_code()
 
     print(s1.check_code("1234"))
+
+    print()
+    print()
+    s2 = SafeBox()
+    print(s2.__dict__)
+
+    print()
+    print()
+    s2.__code = "1234"
+
+    print()
+    print()
+    print(s2.__dict__)
+    print(len(s2.__dict__) == 2)
