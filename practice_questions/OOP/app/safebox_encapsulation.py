@@ -74,6 +74,7 @@ if __name__ == "__main__":
     print()
     print(s2.__dict__)
     print(len(s2.__dict__) == 2)
+<<<<<<< HEAD
 
 
 
@@ -84,3 +85,5 @@ if __name__ == "__main__":
 
 
 
+=======
+>>>>>>> 4a45410 (Add instance attribute count test and main block exploration)
