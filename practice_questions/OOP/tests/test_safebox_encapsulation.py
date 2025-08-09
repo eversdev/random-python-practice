@@ -36,3 +36,9 @@ def test_check_code_returns_str(mock_obj):
 def test_instance_has_one_attribute():
     s1 = SafeBox()
     assert len(s1.__dict__) == 1
+
+
+
+
+
+

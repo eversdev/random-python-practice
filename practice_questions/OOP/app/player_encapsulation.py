@@ -105,3 +105,5 @@ if __name__ == "__main__":
     p1.damage_points()
     print(p1._Player__health)
     """
+
+    print("word")

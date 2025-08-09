@@ -74,3 +74,13 @@ if __name__ == "__main__":
     print()
     print(s2.__dict__)
     print(len(s2.__dict__) == 2)
+
+
+
+
+ s3 = SafeBox()
+ print(s3.__dict__ = 3 )
+
+
+
+
