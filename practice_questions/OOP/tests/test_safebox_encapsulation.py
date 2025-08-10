@@ -38,7 +38,26 @@ def test_instance_has_one_attribute():
     assert len(s1.__dict__) == 1
 
 
+@patch("app.safebox_encapsulation.input")
+def test_set_code_input_too_long(mock_obj):
+    mock_obj.return_value = "12345"
+    s1 = SafeBox()
+    result = s1.set_code()
+    assert result == "The code you entered exceeds 4 digits."
 
 
+@patch("app.safebox_encapsulation.input")
+def test_set_code_input_too_short(mock_obj):
+    mock_obj.return_value = "123"
+    s1 = SafeBox()
+    result = s1.set_code()
+    assert result == "The code you entered is less than 4 digits."
 
 
+@patch("app.safebox_encapsulation.input")
+def test_set_code_input_valid_length(mock_obj):
+    mock_obj.return_value = "1234"
+    s1 = SafeBox()
+    result = s1.set_code()
+    assert result == "You have entered 1234 as your code."
+    assert s1._SafeBox__code == 1234
