@@ -61,3 +61,22 @@ def test_set_code_input_valid_length(mock_obj):
     result = s1.set_code()
     assert result == "You have entered 1234 as your code."
     assert s1._SafeBox__code == 1234
+
+
+def test_check_code_with_correct_code():
+    s1 = SafeBox()
+    s1._SafeBox__code = 1234
+    assert s1.check_code(1234) == "Code entered correctly."
+
+
+def test_check_code_with_wrong_code():
+    s1 = SafeBox()
+    s1._SafeBox__code = 1234
+    assert s1.check_code(0o123) == "Incorrect code entered."
+
+
+def test_check_code_with_non_string_input():
+    s1 = SafeBox()
+    s1._SafeBox__code = 1234
+    result = s1.check_code(1234)
+    assert isinstance(result, str)
