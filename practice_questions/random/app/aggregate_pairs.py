@@ -1,4 +1,13 @@
 def aggregate_pairs(arr):
+    """
+    Split a list of "key:value" strings into lists of [key, value].
+
+    Args:
+        arr (list of str): Input list containing strings in "key:value" format.
+
+    Returns:
+        list: A list of [key, value] pairs, where key is a string and value is a string.
+    """
     new_list = []
     for ele in arr:
         new_ele = ele.split(":")
