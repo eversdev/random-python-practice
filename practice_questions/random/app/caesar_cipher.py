@@ -1,4 +1,16 @@
 def shift_letters(s, n):
+    """
+    This function takes a string and a number and shifts all the letters in the string
+    by that number. Uppercase letters stay uppercase and lowercase stay lowercase.
+    Other characters like punctuation or spaces are not changed.
+
+    Args:
+    s (str): The string that you want to shift.
+    n (int): The number of positions to shift each letter.
+
+    Returns:
+    str: A new string with all the letters shifted.
+    """
     empty_string = ""
     for letter in s:
         l_position = ord(letter) - ord("a")
