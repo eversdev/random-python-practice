@@ -28,6 +28,8 @@ def shift_letters(s, n):
                 shifted_letter = chr(new_ascii)
                 empty_string += shifted_letter
         else:
+            # Keep non-alphabetic characters unchanged
+            # (punctuation, numbers, spaces, etc.)
             empty_string += letter
 
     return empty_string
