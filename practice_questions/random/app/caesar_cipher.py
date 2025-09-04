@@ -38,3 +38,4 @@ def shift_letters(s, n):
 if __name__ == "__main__":
     print(shift_letters("tom-CRUISE", 2))
     print("Shifted result:", shift_letters("hello-world", 5))
+    print("Test shift:", shift_letters("Python3.9!", 4))
